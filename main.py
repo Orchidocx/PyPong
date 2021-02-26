@@ -1,6 +1,7 @@
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
+from scoreboard import Scoreboard
 import time
 
 WIDTH = 800
@@ -21,6 +22,9 @@ l_paddle = Paddle(L_PADDLE_X, 0)
 
 # Setup ball
 ball = Ball()
+
+# Setup scoreboard
+scoreboard = Scoreboard(180)
 
 # listen to keystrokes
 screen.listen()
@@ -47,6 +51,8 @@ while game_is_on:
 
     # Detects if ball passes paddle (misses ball)
     if ball.xcor() > WIDTH/2 or ball.xcor() < -WIDTH/2:
+        scoreboard.l_point() if ball.xcor() > 0 else scoreboard.r_point()
         ball.reset()
+
 
 screen.exitonclick()
