@@ -45,5 +45,8 @@ while game_is_on:
     if ball.distance(r_paddle) < 50 and ball.xcor() > R_PADDLE_X - 20 or ball.distance(l_paddle) < 50 and ball.xcor() < L_PADDLE_X + 20:
         ball.bounce_x()
 
+    # Detects if ball passes paddle (misses ball)
+    if ball.xcor() > WIDTH/2 or ball.xcor() < -WIDTH/2:
+        ball.reset()
 
 screen.exitonclick()
